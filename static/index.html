@@ -80,7 +80,7 @@ footer {
 }
 .link-box {
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 1.5rem auto;
 }
 .link-box a {
   color: var(--mizzou-black);
@@ -94,21 +94,44 @@ footer {
 .link-box a:hover {
   background-color: #d9a623;
 }
+.reminder {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
 </style>
 </head>
 <body>
 
 <header>
   <h1>Mizzou Spanish Composition Checker 🐯</h1>
-  <p>Department of Romance Languages – SPAN 1200</p>
+  <p>School of Languages, Literatures, and Cultures – SPAN 1200</p>
 </header>
+
+<div class="link-box">
+  <a href="https://docs.google.com/presentation/d/e/2PACX-1vSZBOEj_oSD5qutLTaCS6X2ndhHQxDGD1KL3bZwGkXrGLj6j6D84TnDH0JO7VnLQw/pub?start=false&loop=false&delayms=3000&slide=id.p3" target="_blank">
+    🇨🇱 Click here to see slides from Chile (Use arrow keys to navigate)
+  </a>
+</div>
 
 <main>
   <div class="prompt-box">
     <strong>Prompt:</strong> Describe what you did on your last birthday. 
-    Use at least <b>6 regular</b> verbs and <b>6 irregular</b> verbs in the past tense.  
+    Use the <b>past tense</b> (<em>pretérito</em>) to talk about your experience.
     <br><br>
-    <em>Example irregulars:</em> tener, venir, decir, poder, poner, saber, estar, querer, hacer, traer, conducir, traducir, dar.
+    Include details such as:
+    <ul>
+      <li>How you <b>prepared</b> and <b>where</b> you celebrated</li>
+      <li>Who <b>came</b> to the celebration and what everyone <b>did</b></li>
+      <li>What gifts or surprises you <b>received</b> or <b>gave</b></li>
+      <li>How you <b>felt</b> and what made the day <b>special</b></li>
+    </ul>
+    Try to include <b>at least 8 regular</b> and <b>8 irregular</b> verbs in the past tense.
+    <br><br>
+    <b>Examples of regular verbs:</b> bailar, cocinar, limpiar, visitar, preparar, estudiar, mirar, ayudar
+    <br>
+    <b>Examples of irregular verbs:</b> tener, venir, decir, poder, poner, saber, estar, querer, hacer, traer, conducir, traducir, dar
+    <div class="reminder">💡 A friendly reminder from Ryan that <b>vino 🍷</b> also counts as an irregular verb 😉</div>
   </div>
 
   <label for="text"><strong>Your composition:</strong></label>
@@ -121,12 +144,6 @@ footer {
   <h2>🗣 Explanations (in English)</h2>
   <div id="explanations" class="out"></div>
 </main>
-
-<div class="link-box">
-  <a href="https://docs.google.com/presentation/d/e/2PACX-1vSZBOEj_oSD5qutLTaCS6X2ndhHQxDGD1KL3bZwGkXrGLj6j6D84TnDH0JO7VnLQw/pub?start=false&loop=false&delayms=3000&slide=id.p3" target="_blank">
-    🇨🇱 Click here to see slides from Chile (Use arrow keys to navigate)
-  </a>
-</div>
 
 <footer>
   <p>University of Missouri © 2025</p>
