@@ -1,7 +1,14 @@
-# never commit secrets or heavy stuff
-.env
-.venv/
-__pycache__/
-*.log
-*.sqlite
+# OS
 .DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Node
+node_modules/
+dist/
+build/
