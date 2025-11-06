@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Mizzou Spanish Composition Checker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root {
+  --mizzou-gold: #F1B82D;
+  --mizzou-black: #000000;
+  --mizzou-gray: #E6E6E6;
+}
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--mizzou-gray);
+  margin: 0;
+  padding: 0;
+  color: var(--mizzou-black);
+}
+header {
+  background-color: var(--mizzou-black);
+  color: var(--mizzou-gold);
+  padding: 1.5rem;
+  text-align: center;
+}
+main {
+  background-color: white;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+h1, h2 {
+  color: var(--mizzou-black);
+}
+textarea {
+  width: 100%;
+  height: 220px;
+  padding: 1rem;
+  border: 2px solid var(--mizzou-gold);
+  border-radius: 8px;
+  resize: vertical;
+  font-size: 1rem;
+}
+button {
+  background-color: var(--mizzou-gold);
+  border: none;
+  color: var(--mizzou-black);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+button:hover {
+  background-color: #d9a623;
+}
+.out {
+  white-space: pre-wrap;
+  border: 1px solid var(--mizzou-black);
+  padding: 1rem;
+  border-radius: 8px;
+  background: #fafafa;
+}
+.prompt-box {
+  background-color: var(--mizzou-gold);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  color: var(--mizzou-black);
+  font-weight: 500;
+}
+footer {
+  text-align: center;
+  color: var(--mizzou-black);
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mizzou Spanish Composition Checker 🐯</h1>
+  <p>Department of Romance Languages – SPAN 1200</p>
+</header>
+
+<main>
+  <div class="prompt-box">
+    <strong>Prompt:</strong> Describe what you did on your last birthday. 
+    Use at least <b>6 regular</b> verbs and <b>6 irregular</b> verbs in the past tense.  
+    <br><br>
+    <em>Example irregulars:</em> tener, venir, decir, poder, poner, saber, estar, querer, hacer, traer, conducir, traducir, dar.
+  </div>
+
+  <label for="text"><strong>Your composition:</strong></label>
+  <textarea id="text" placeholder="Escribe tu composición aquí..."></textarea><br><br>
+  <button id="go">Check my composition</button>
+
+  <h2>✅ Corrected Version</h2>
+  <div id="corrected" class="out"></div>
+
+  <h2>🗣 Explanations (in English)</h2>
+  <div id="explanations" class="out"></div>
+</main>
+
+<footer>
+  <p> University of Missouri © 2025</p>
+</footer>
+
+<script>
+const go=document.getElementById("go");
+go.onclick=async()=>{
+  const text=document.getElementById("text").value.trim();
+  if(!text){alert("Please write something first.");return;}
+  const res=await fetch("/api/check",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({text})
+  });
+  const data=await res.json();
+  if(!res.ok){alert(data.detail);return;}
+  document.getElementById("corrected").textContent=data.corrected_text||"";
+  document.getElementById("explanations").textContent=data.explanations_md||"";
+};
+</script>
+
+</body>
+</html>

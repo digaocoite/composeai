@@ -1,0 +1,7 @@
+# never commit secrets or heavy stuff
+.env
+.venv/
+__pycache__/
+*.log
+*.sqlite
+.DS_Store
